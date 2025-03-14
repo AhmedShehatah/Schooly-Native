@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Schooly</string>
+    <string name="your_school">مَدرستك</string>
+    <string name="start_now">ابدأ دلوقتي</string>
+    <string name="in_your_pocket">في جيبك</string>
+    <string name="splash_setence">التعليم الرقمي هو الطريق للمستقبل. سكولي بتوصل بينك وبين مدرستك بأحدث تقنيات الذكاء الاصطناعي.</string>
+</resources>

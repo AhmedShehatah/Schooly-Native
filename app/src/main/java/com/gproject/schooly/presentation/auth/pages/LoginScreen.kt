@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
 import com.gproject.schooly.core.design.composables.buttons.CustomButton
 import com.gproject.schooly.core.design.composables.textfields.CustomTextField
 import com.gproject.schooly.core.utils.VerticalSpace
@@ -27,7 +28,7 @@ import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     val viewmodel = koinViewModel<LoginViewModel>()
     val state = viewmodel.viewState.collectAsState().value
     val context = LocalContext.current
@@ -38,6 +39,7 @@ fun LoginScreen() {
                 is LoginSideEffect.ShowToast -> Toast.makeText(
                     context, effect.message, Toast.LENGTH_SHORT
                 ).show()
+
             }
         }.collect()
     }
