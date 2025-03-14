@@ -3,10 +3,13 @@ package com.gproject.schooly.core.design.composables.texts
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import com.gproject.schooly.R
 import com.gproject.schooly.core.utils.sp
 
 enum class TextSize(val value: Float) {
@@ -24,7 +27,7 @@ fun CustomText(
     size: TextSize,
     center: Boolean = false,
     color: Color = Color.Unspecified,
-    maxLines: Int = 1,
+    maxLines: Int = Int.MAX_VALUE,
     overflow: Boolean = false,
     bold: Boolean = false,
     underline: Boolean = false,
@@ -32,6 +35,7 @@ fun CustomText(
     Text(
         text ?: "N/A",
         color = color,
+        fontFamily = FontFamily(Font(R.font.alex)),
         fontSize = size.value.sp(), // Responsive size using ScreenUtil
         fontWeight = if (bold) FontWeight.Bold else null,
         textAlign = if (center) TextAlign.Center else null,

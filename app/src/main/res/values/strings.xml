@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Schooly</string>
+    <string name="your_school">Your School</string>
+    <string name="start_now">Start Now!</string>
+    <string name="in_your_pocket">In your pocket</string>
+    <string name="splash_setence">Digital education is the way of the future. Skoli connects you and your school using the latest artificial intelligence technologies.</string>
 </resources>
