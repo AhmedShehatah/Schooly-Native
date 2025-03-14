@@ -6,13 +6,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.gproject.schooly.R
+import com.gproject.schooly.app.navigation.AppRouter
 import com.gproject.schooly.core.design.composables.buttons.CustomButton
 import com.gproject.schooly.core.design.composables.texts.CustomText
 import com.gproject.schooly.core.design.composables.texts.TextSize
@@ -20,9 +24,38 @@ import com.gproject.schooly.core.design.theme.Palette
 import com.gproject.schooly.core.utils.VerticalSpace
 import com.gproject.schooly.core.utils.h
 import com.gproject.schooly.core.utils.w
+import com.gproject.schooly.core.viewmodels.SideEffectsKey
+import com.gproject.schooly.presentation.splash.viewmodel.SplashEffect
+import com.gproject.schooly.presentation.splash.viewmodel.SplashEvents
+import com.gproject.schooly.presentation.splash.viewmodel.SplashViewModel
+import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.compose.koinViewModel
+import timber.log.Timber
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(navController: NavController) {
+
+    val viewmodel: SplashViewModel = koinViewModel()
+
+
+
+
+    LaunchedEffect(SideEffectsKey) {
+        viewmodel.setEvent(SplashEvents.CheckFirstTime)
+
+        viewmodel.effect.onEach {
+            when (it) {
+                is SplashEffect.NavigateToLogin -> {
+                    navController.navigate(AppRouter.LoginScreen.route)
+                    Timber.i("Navigate to login")
+                }
+            }
+        }.collect {}
+    }
+
+
+
+
     Column(
         Modifier
             .fillMaxSize()
@@ -59,12 +92,14 @@ fun SplashScreen() {
             )
         }
 
-        CustomButton(text = stringResource(R.string.start_now), onClick = {})
+        CustomButton(text = stringResource(R.string.start_now), onClick = {
+            viewmodel.setEvent(SplashEvents.NavigateToLogin)
+        })
     }
 }
 
 @Preview
 @Composable
 fun SplashScreenPreview() {
-    SplashScreen()
+    SplashScreen(navController = rememberNavController())
 }
