@@ -4,4 +4,8 @@
     <string name="start_now">Start Now!</string>
     <string name="in_your_pocket">In your pocket</string>
     <string name="splash_setence">Digital education is the way of the future. Skoli connects you and your school using the latest artificial intelligence technologies.</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
 </resources>

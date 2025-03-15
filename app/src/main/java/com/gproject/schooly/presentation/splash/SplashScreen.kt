@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -21,9 +22,8 @@ import com.gproject.schooly.core.design.composables.buttons.CustomButton
 import com.gproject.schooly.core.design.composables.texts.CustomText
 import com.gproject.schooly.core.design.composables.texts.TextSize
 import com.gproject.schooly.core.design.theme.Palette
+import com.gproject.schooly.core.utils.Dimensions
 import com.gproject.schooly.core.utils.VerticalSpace
-import com.gproject.schooly.core.utils.h
-import com.gproject.schooly.core.utils.w
 import com.gproject.schooly.core.viewmodels.SideEffectsKey
 import com.gproject.schooly.presentation.splash.viewmodel.SplashEffect
 import com.gproject.schooly.presentation.splash.viewmodel.SplashEvents
@@ -54,48 +54,51 @@ fun SplashScreen(navController: NavController) {
     }
 
 
+    Scaffold { innerPadding ->
+        Column(
+            Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+                .padding(Dimensions.defaultPagePadding),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
 
 
-    Column(
-        Modifier
-            .fillMaxSize()
-            .padding(horizontal = 18.w(), vertical = 18.h()),
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-
-
-        Image(
-            modifier = Modifier.scale(1.5f),
-            painter = painterResource(id = R.drawable.splash), contentDescription = "Splash",
-        )
-
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            CustomText(
-                text = stringResource(R.string.your_school),
-                size = TextSize.S30,
-                bold = true,
-                color = Palette.primary.color8
-
+            Image(
+                modifier = Modifier.scale(1.5f),
+                painter = painterResource(id = R.drawable.splash), contentDescription = "Splash",
             )
-            CustomText(
-                text = stringResource(R.string.in_your_pocket),
-                size = TextSize.S46,
-                bold = true,
-                color = Palette.character.primary85,
-            )
-            12.VerticalSpace()
-            CustomText(
-                text = stringResource(R.string.splash_setence), size = TextSize.S14,
-                center = true,
-                color = Palette.character.secondary45,
-            )
+
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                CustomText(
+                    text = stringResource(R.string.your_school),
+                    size = TextSize.S30,
+                    bold = true,
+                    color = Palette.primary.color8
+
+                )
+                CustomText(
+                    text = stringResource(R.string.in_your_pocket),
+                    size = TextSize.S46,
+                    bold = true,
+                    color = Palette.character.primary85,
+                )
+                12.VerticalSpace()
+                CustomText(
+                    text = stringResource(R.string.splash_setence), size = TextSize.S14,
+                    center = true,
+                    color = Palette.character.secondary45,
+                )
+            }
+
+            CustomButton(text = stringResource(R.string.start_now), onClick = {
+                viewmodel.setEvent(SplashEvents.NavigateToLogin)
+            })
         }
-
-        CustomButton(text = stringResource(R.string.start_now), onClick = {
-            viewmodel.setEvent(SplashEvents.NavigateToLogin)
-        })
     }
+
+
 }
 
 @Preview

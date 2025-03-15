@@ -2,6 +2,7 @@ package com.gproject.schooly.core.design.composables.texts
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -25,6 +26,7 @@ enum class TextSize(val value: Float) {
 fun CustomText(
     text: String?,
     size: TextSize,
+    modifier: Modifier = Modifier,
     center: Boolean = false,
     color: Color = Color.Unspecified,
     maxLines: Int = Int.MAX_VALUE,
@@ -34,6 +36,7 @@ fun CustomText(
 ) {
     Text(
         text ?: "N/A",
+        modifier = modifier,
         color = color,
         fontFamily = FontFamily(Font(R.font.alex)),
         fontSize = size.value.sp(), // Responsive size using ScreenUtil

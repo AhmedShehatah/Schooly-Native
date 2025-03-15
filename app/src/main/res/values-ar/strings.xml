@@ -5,4 +5,8 @@
     <string name="start_now">ابدأ دلوقتي</string>
     <string name="in_your_pocket">في جيبك</string>
     <string name="splash_setence">التعليم الرقمي هو الطريق للمستقبل. سكولي بتوصل بينك وبين مدرستك بأحدث تقنيات الذكاء الاصطناعي.</string>
+    <string name="password">كلمة السر</string>
+    <string name="email">" البريد الالكتروني"</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="forgot_password">هل نسيت كلمة المرور؟</string>
 </resources>
