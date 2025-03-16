@@ -3,10 +3,16 @@ package com.gproject.schooly.core.utils
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -78,11 +84,21 @@ fun ToastMessage(
                         }
                     }
                 }
-                .padding(16.dp)) {
+                .padding(16.r())) {
 
-            CustomText(
-                text = message, color = Color.White, size = TextSize.S18,
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                CustomText(
+                    text = message, color = Color.White, size = TextSize.S16,
+                )
+                IconButton(onClick = { onDismiss() }) {
+                    Icon(Icons.Default.Clear, contentDescription = null, tint = Color.White)
+                }
+            }
+
         }
     }
 }

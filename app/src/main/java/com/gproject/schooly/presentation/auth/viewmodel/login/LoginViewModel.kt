@@ -1,6 +1,7 @@
-package com.gproject.schooly.presentation.auth.viewmodel
+package com.gproject.schooly.presentation.auth.viewmodel.login
 
 import androidx.lifecycle.viewModelScope
+import com.gproject.schooly.core.utils.ToastType
 import com.gproject.schooly.core.viewmodels.BaseViewModel
 import com.gproject.schooly.domain.auth.usecases.LoginParams
 import com.gproject.schooly.domain.auth.usecases.LoginUseCase
@@ -21,14 +22,14 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) :
         viewModelScope.launch {
             loginUseCase(LoginParams(email = email, password = password)).launchAndCollect(
                 onSuccess = {
-                    setEffect { LoginSideEffect.ShowToast("Success") }
+                    setEffect { LoginSideEffect.ShowToast("Success", ToastType.SUCCESS) }
                     setState { LoginViewState.Success }
                 },
                 onStart = {
                     setState { LoginViewState.Loading }
                 },
                 onError = {
-                    setEffect { LoginSideEffect.ShowToast(it.message ?: "Error") }
+                    setEffect { LoginSideEffect.ShowToast(it.message ?: "Error", ToastType.ERROR) }
                     setState {
                         LoginViewState.Error(it.message ?: "Error")
                     }
@@ -39,7 +40,3 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) :
     }
 
 }
-
-
-
-

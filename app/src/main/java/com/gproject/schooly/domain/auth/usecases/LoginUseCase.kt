@@ -12,8 +12,6 @@ class LoginUseCase(private val repo: IAuthRepo) : IBaseUseCase<Unit?, LoginParam
 }
 
 @Serializable
-data
-
-class LoginParams(
+data class LoginParams(
     val email: String, val password: String
 )

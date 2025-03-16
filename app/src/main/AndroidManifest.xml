@@ -18,7 +18,9 @@
         <activity
             android:name=".app.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowOptOutEdgeToEdgeEnforcement="true"
+            tools:targetApi="35">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
