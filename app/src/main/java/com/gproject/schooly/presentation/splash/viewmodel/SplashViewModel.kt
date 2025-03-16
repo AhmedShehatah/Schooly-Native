@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.gproject.schooly.core.preferences.preferenceManager.PreferencesManager
 import com.gproject.schooly.core.viewmodels.BaseViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class SplashViewModel(private val preferenceManager: PreferencesManager) :
     BaseViewModel<SplashState, SplashEvents, SplashEffect>() {
@@ -13,8 +12,6 @@ class SplashViewModel(private val preferenceManager: PreferencesManager) :
     override fun handleEvents(event: SplashEvents) {
         when (event) {
             is SplashEvents.NavigateToLogin -> {
-                setEffect { SplashEffect.NavigateToLogin }
-                Timber.i("Navigate to login viewmodel")
                 viewModelScope.launch {
                     preferenceManager.saveUnEncrypted("isFirstTime", false)
 

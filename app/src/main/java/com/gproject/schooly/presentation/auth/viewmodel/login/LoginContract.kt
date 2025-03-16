@@ -1,5 +1,6 @@
-package com.gproject.schooly.presentation.auth.viewmodel
+package com.gproject.schooly.presentation.auth.viewmodel.login
 
+import com.gproject.schooly.core.utils.ToastType
 import com.gproject.schooly.core.viewmodels.ViewEvent
 import com.gproject.schooly.core.viewmodels.ViewSideEffect
 import com.gproject.schooly.core.viewmodels.ViewState
@@ -16,5 +17,5 @@ sealed class LoginViewState : ViewState {
 }
 
 sealed class LoginSideEffect : ViewSideEffect {
-    data class ShowToast(val message: String) : LoginSideEffect()
+    data class ShowToast(val message: String, val type: ToastType) : LoginSideEffect()
 }

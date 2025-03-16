@@ -14,7 +14,7 @@ class NetworkHelper(private val preferenceManager: PreferencesManager) {
         val response = try {
             networkCall.invoke()
         } catch (throwable: IOException) {
-            throw NetworkException
+            throw NetworkException(throwable.message)
         } catch (throwable: Throwable) {
             throw UnknownError(throwable.message)
         }
@@ -35,7 +35,7 @@ class NetworkHelper(private val preferenceManager: PreferencesManager) {
                 return dataPayload.data
             }
 
-            401 -> throw UnauthorizedException()
+            401 -> throw UnauthorizedException(errorMessage = response.body<Result<T>>().message)
             in 400..499 -> {
                 val errorBody = response.body<Result<T>>()
                 throw GeneralHttpException(

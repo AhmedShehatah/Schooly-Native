@@ -8,6 +8,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -17,6 +18,7 @@ import com.gproject.schooly.core.design.composables.texts.CustomText
 import com.gproject.schooly.core.design.composables.texts.TextSize
 import com.gproject.schooly.core.design.theme.Palette
 import com.gproject.schooly.core.utils.r
+import com.gproject.schooly.core.utils.sp
 
 @Composable
 fun CustomTextField(
@@ -29,6 +31,8 @@ fun CustomTextField(
     isSecure: Boolean = false,
     imeAction: ImeAction = ImeAction.Next
 ) {
+
+
     Column(modifier = modifier.fillMaxWidth()) {
         CustomText(
             label, size = TextSize.S14, color = Palette.character.title85
@@ -37,6 +41,7 @@ fun CustomTextField(
 
             modifier = modifier.fillMaxWidth(),
             value = value,
+
             onValueChange = onValueChange,
             colors = OutlinedTextFieldDefaults.colors(
                 unfocusedBorderColor = Palette.neutral.color5
@@ -45,6 +50,7 @@ fun CustomTextField(
                 CustomText(text = hint, size = TextSize.S14)
             },
             enabled = enabled,
+            textStyle = TextStyle(fontSize = 14.sp()),
 
             shape = RoundedCornerShape(8.r()),
             keyboardOptions = KeyboardOptions(

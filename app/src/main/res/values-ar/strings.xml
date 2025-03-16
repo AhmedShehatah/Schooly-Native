@@ -5,4 +5,16 @@
     <string name="start_now">ابدأ دلوقتي</string>
     <string name="in_your_pocket">في جيبك</string>
     <string name="splash_setence">التعليم الرقمي هو الطريق للمستقبل. سكولي بتوصل بينك وبين مدرستك بأحدث تقنيات الذكاء الاصطناعي.</string>
+    <string name="password">كلمة السر</string>
+    <string name="email">" البريد الالكتروني"</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="forgot_password">هل نسيت كلمة المرور؟</string>
+    <string name="change_password">" تغيير كلمة السر"</string>
+    <string name="send_otp">ارسل رابط التغيير</string>
+    <string name="back_to_login">هل تريد تسجيل الدخول؟</string>
+    <string name="check_otp_sentence">تحقق من رسائل الموبايل وأدخل الرمز المرسل عبر الخانات التالية:</string>
+    <string name="check_otp">تحقق من الرمز</string>
+    <string name="reset_password">تغيير كلمة المرور</string>
+    <string name="send">ارسال</string>
+    <string name="confirm_password">تاكيد كلمة المرور</string>
 </resources>
